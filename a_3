@@ -1,0 +1,15 @@
+import math
+
+x=3
+y=4
+z=5
+
+def convertir_cilindricas(x, y, z):
+    rho = math.sqrt(x**2 + y**2)
+    theta = math.atan2(y, x)
+    z_cil = z
+    return (rho, theta, z_cil)
+
+rectangular=(x,y,z)
+cilindrica = convertir_cilindricas(*rectangular)
+print(cilindrica)

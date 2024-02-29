@@ -1,0 +1,17 @@
+import random
+
+def generar_numeros_aleatorios(cantidad, rango_min, rango_max):
+    numeros_aleatorios = []
+    for _ in range(cantidad):
+        numero_aleatorio = random.uniform(rango_min, rango_max)
+        numeros_aleatorios.append(numero_aleatorio)
+    return numeros_aleatorios
+
+cantidad_numeros = int(input("Ingrese la cantidad de números aleatorios a generar: "))
+rango_min = int(input("Ingrese el límite inferior del rango: "))
+rango_max = int(input("Ingrese el límite superior del rango: "))
+
+numeros_generados = generar_numeros_aleatorios(cantidad_numeros, rango_min, rango_max)
+
+print(f"{cantidad_numeros} números aleatorios en el rango [{rango_min}, {rango_max}]:")
+print(numeros_generados)

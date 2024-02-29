@@ -1,0 +1,54 @@
+from math import sqrt
+from scipy import signal
+import matplotlib.pyplot as plt
+import numpy as np 
+
+a= float(input('Ingrese el coeficiente del polo de tercer orde: '))
+b= float(input('Ingrese el coeficiente : '))
+c= float(input('Ingrese el coeficiente c: '))
+
+def resolver_cuadratica(a,b,c):
+    determinate = b**2 - 4*a*c
+
+    if determinate > 0:
+      Raiz = - b + sqrt(b**2-4*a*c) / (2*a)
+      Raiz2 = - b - sqrt(b**2-4*a*c) / (2*a)
+
+      return Raiz, Raiz2
+    elif determinate == 0:
+        Raiz = - b / (2*a)
+        return Raiz,Raiz
+    else:
+       Parte_real= -b/(2*a)
+       Parte_imaginaria = sqrt(abs(determinate))/(2*a)
+       Raiz= complex(Parte_real,Parte_imaginaria)
+       Raiz2= complex(Parte_real, -Parte_imaginaria)
+       
+       return (Raiz, Raiz2) 
+    
+
+def Tipo_de_sistema(a,b,c):
+   Raiz,Raiz2= resolver_cuadratica(a,b,c)
+   Dato = -b/ (2* sqrt(a*c))
+   
+   if abs(Dato < 1) <1e-6:
+      return 'Subamortiguado'
+   elif Dato <1:
+      return 'Criticamente Amortiguado'
+   else: 
+        return 'Sobreamortiguado'
+    
+
+Sistema = Tipo_de_sistema( a,b,c)
+print('El sistema es:' ,Sistema)
+
+t= np.linspace (0,20,1000)
+num= [1]
+den=[a,b,c]
+tout, yout = signal.step ((num,den), T=t)
+plt.plot (tout, yout)
+plt.title('Respuesta en dominio tiempo')
+plt.xlabel('Tiempo')
+plt.ylabel ('Respuesta')
+plt.grid()
+plt.show()

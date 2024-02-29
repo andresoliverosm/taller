@@ -1,0 +1,17 @@
+import numpy as np
+
+V1 = np.array([8, 9, 12])
+V2 = np.array([2, 5, 7])
+
+
+Suma_v = V1 + V2
+Resta_v = V1 - V2
+Producto_Punto = np.dot(V1, V2)
+Producto_Cruz = np.cross(V1,V2)
+Division_v = V1/ V2
+
+print("Suma:", Suma_v)
+print("Resta:", Resta_v)
+print("Producto punto:", Producto_Punto)
+print("Producto cruz:", Producto_Cruz)
+print("División:", Division_v)

@@ -1,0 +1,24 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Coeficientes de la ecuación de resistencia vs temperatura para un sensor PT100
+a = 3.9083e-3
+b = -5.775e-7
+
+# Función para calcular la resistencia del sensor PT100 dado una temperatura
+def pt100_resistencia(temperature):
+    return 100 * (1 + a*temperature + b*temperature**2)
+
+# Intervalo de temperaturas de -200°C a 200°C
+temperatures = np.linspace(-200, 200, num=1000)
+
+# Calcula la resistencia para cada temperatura en el intervalo
+resistances = pt100_resistencia(temperatures)
+
+# Grafica la resistencia vs temperatura
+plt.plot(temperatures, resistances)
+plt.xlabel('Temperatura (°C)')
+plt.ylabel('Resistencia (Ω)')
+plt.title('Comportamiento de un sensor PT100')
+plt.grid()
+plt.show()

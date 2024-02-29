@@ -1,0 +1,20 @@
+import numpy as np
+import numpy.linalg as lg
+
+M1 = np.array([[5, 2], [7, 4]])
+M2 = np.array([[9, 10], [1, 3]])
+
+Suma= M1+M2
+Resta= M1-M2
+Producto_Punto= np.dot(M1,M2)
+Producto_Cruz= np.cross(M1,M2)
+
+M2_INV=lg.inv(M2)
+Division=np.dot(M1,M2_INV)
+
+
+print("Suma:\n", Suma)
+print("Resta:\n", Resta)
+print("Producto punto:\n", Producto_Punto)
+print("Producto cruz:\n", Producto_Cruz)
+print("División:\n",Division)

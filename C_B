@@ -1,0 +1,33 @@
+import numpy as np
+import matplotlib.pyplot as plt
+from control import step_response, tf
+
+# Get coefficients from user
+num = float(input("Enter the numerator coefficient: "))
+den = [float(x) for x in input("Enter the denominator coefficients (separated by space): ").split()]
+
+# Create transfer function
+G = tf([num], den)
+
+# Calculate step response
+t, y = step_response(G)
+
+# Plot step response
+plt.plot(t, y)
+plt.xlabel('Time')
+plt.ylabel('Output')
+plt.title('Step Response of Second-Order System')
+plt.grid()
+plt.show()
+
+# Determine type of system
+wn = np.sqrt(den[-2]) # natural frequency
+zeta = den[-1]/(2*wn) # damping ratio
+
+if zeta < 1:
+    if zeta > 0:
+        print("The system is underdamped.")
+    else:
+        print("The system is oscillatory.")
+elif zeta == 1:
+    print("The system is critically damped.")

@@ -1,0 +1,7 @@
+
+corriente = float(input("Ingrese el valor de la corriente en (A): "))
+voltaje= float(input("Ingrese el valor del voltaje en (V): "))
+
+P=corriente * voltaje
+
+print(f'La potencia consumida es: {P} W')
